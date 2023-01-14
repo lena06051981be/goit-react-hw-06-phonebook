@@ -78,3 +78,4 @@ const getVisibleContacts = () => {
 }
 
 export default App
+
