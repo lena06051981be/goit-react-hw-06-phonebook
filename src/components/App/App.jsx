@@ -6,6 +6,10 @@ import { Container } from './App.styled';
 import  ContactsData from 'components/ContactsData.json'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterContacts, getFilterResults } from 'redux/filterSlice';
+
+
 
 
 const GET_LS_CONTACTS = JSON.parse(window.localStorage.getItem('contacts'));
@@ -13,7 +17,10 @@ const GET_LS_CONTACTS = JSON.parse(window.localStorage.getItem('contacts'));
 
 const App = () => {
   const [contacts, setContacts] = useState(GET_LS_CONTACTS ?? ContactsData);
-  const [filter, setFilter] = useState('');
+
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilterResults);
+  // const [filter, setFilter] = useState('');
   console.log(contacts);
 
   useEffect(() => {
@@ -51,7 +58,8 @@ const handleDelete = selectedId => {
   };
 
   const changeFilter = event => {
-    setFilter(event.currentTarget.value);
+    dispatch(filterContacts(event.currentTarget.value))
+    // setFilter(event.currentTarget.value);
   };  
   
 const getVisibleContacts = () => {
