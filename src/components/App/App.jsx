@@ -16,9 +16,9 @@ const App = () => {
   const dispatch = useDispatch();
   console.log(contacts);
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts])
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts])
 
   const formSubmitHandler = event => { 
     dispatch(addContact(event.name, event.number));
