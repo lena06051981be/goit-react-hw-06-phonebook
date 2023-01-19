@@ -1,7 +1,7 @@
 import { Contacts } from 'components/ContactList/ContactList';
 import Filter from 'components/Filter/Filter';
 import PhonebookForm from 'components/PhonebookForm/PhonebookForm';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Container } from './App.styled';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,10 +15,6 @@ const App = () => {
   const filter = useSelector(getFilterResults);
   const dispatch = useDispatch();
   console.log(contacts);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts])
 
   const formSubmitHandler = event => { 
     dispatch(addContact(event.name, event.number));
